@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 14mm 14mm 12mm 14mm; }
+  body { font-family: "Noto Sans", sans-serif; color: #1a1f2b; font-size: 9.2pt; line-height: 1.42; }
+  h1 { font-size: 19pt; margin: 0 0 2mm; color: #0b5ea8; }
+  .sub { font-size: 10pt; color: #556; margin-bottom: 4mm; }
+  h2 { font-size: 11pt; color: #0b5ea8; margin: 4mm 0 1.5mm; border-bottom: 0.5pt solid #cdd8e4; padding-bottom: 0.8mm; }
+  p { margin: 0 0 2mm; }
+  ul { margin: 0 0 2mm 5mm; padding: 0; }
+  li { margin-bottom: 1.2mm; }
+  .tag { display: inline-block; background: #e8f0fa; color: #0b5ea8; border-radius: 3pt; padding: 0.6mm 2mm; font-size: 8.2pt; margin-right: 1.5mm; }
+  .safety { background: #fff7e6; border: 0.6pt solid #e8c46a; border-radius: 3pt; padding: 2.5mm 3mm; margin: 2mm 0; }
+  .footer { margin-top: 3mm; font-size: 8.2pt; color: #667; }
+  b { color: #0b3d6e; }
+</style>
+</head>
+<body>
+
+<h1>HelpMap — find help in your community, in plain language</h1>
+<div class="sub">WarriorHacks 2.0 — Theme: solve an issue in your community<br>
+Built by 十字架 maebahesioru · github.com/maebahesioru/helpmap</div>
+
+<h2>Purpose</h2>
+<p>Every community has resources — food banks, free clinics, shelters, ESL classes, legal aid —
+but the people who need them most often can't find them: scattered PDFs, bureaucratic
+language, English-only websites. A stressed parent looking for free food tonight doesn't
+need a search engine; they need a warm, direct answer: <b>where, when, what to bring.</b>
+HelpMap turns a community's own resource guide into a navigator that answers in plain
+language — cited to the guide, read aloud, and honest about what it doesn't know.</p>
+
+<h2>Key features</h2>
+<ul>
+  <li><b>Guide ingestion</b> — upload the community's resource guide (PDF / TXT / MD);
+      every organization keeps its exact source.</li>
+  <li><b>Quick help buttons</b> — Food · Health · Shelter · ESL · Legal: one tap answers
+      the most urgent needs.</li>
+  <li><b>Warm, practical answers</b> — organization, address, hours, languages, and what
+      to bring (including "no ID required"), cited to the exact line.</li>
+  <li><b>🔊 Spoken answers</b> — neural TTS reads every answer aloud; accessible for
+      low-vision and low-literacy users.</li>
+  <li><b>Browse mode</b> — the whole guide by category, with an Ask-about-this button on
+      every organization.</li>
+  <li><b>Honest refusals</b> — needs the guide doesn't cover get an explicit refusal. An
+      invented address is worse than no answer.</li>
+  <li><b>Emergency first</b> — danger or medical emergencies are routed to 911 before
+      anything else.</li>
+</ul>
+
+<div class="safety">
+<b>Safety &amp; dignity by design:</b> answers come only from the uploaded guide; no
+invented addresses or phone numbers, ever. The tone is warm and non-judgmental, and the
+app surfaces when no ID, no registration, or no documents are required — the questions
+people are afraid to ask. The bundled guide ("Springfield") is entirely fictional.
+</div>
+
+<h2>How it works</h2>
+<p>Python + FastAPI backend; single-page web UI (no build step). Guide ingestion keeps
+source-linked passages; a browse endpoint parses the guide into categorized organizations.
+Retrieval is scikit-learn TF-IDF (local, any language); generation is retrieval-scoped with
+mandatory citations and an explicit refusal token. Audio uses edge-tts with content-hash
+caching. Any OpenAI-compatible LLM endpoint can be configured.</p>
+
+<h2>Impact</h2>
+<ul>
+  <li><b>Access</b> — the people who need help most get direct, actionable answers.</li>
+  <li><b>Language</b> — audio + plain language lower barriers for non-native speakers and
+      low-literacy users.</li>
+  <li><b>Trust</b> — cited answers and honest refusals make the tool safe to rely on.</li>
+  <li><b>Reusability</b> — any community can deploy it with their own guide: the data is a
+      file, the app is free.</li>
+</ul>
+
+<div class="footer">
+<span class="tag">python</span><span class="tag">fastapi</span><span class="tag">scikit-learn</span><span class="tag">edge-tts</span><span class="tag">LLM</span><span class="tag">RAG</span><span class="tag">community</span><br>
+Demo video: youtu.be/OVDilJSLxIQ (unlisted) · Code: github.com/maebahesioru/helpmap<br>
+HelpMap is not a medical device and is not for emergencies. Always consult a qualified clinician.
+</div>
+
+</body>
+</html>
